@@ -4,11 +4,12 @@ package auth;
 
 option go_package = "zimin.auth.v1;authv1";
 
-service auth{
-    rpc Register (RegisterRequest) returns (RegisterResponse);
-    rpc Login (LoginRequest) returns (LoginResponse);
-    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
-    rpc Refresh (RefreshRequest) returns (RefreshResponse);
+service auth {
+    rpc Register (RegisterRequest) returns (RegisterResponse) {}
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse) {}
+    rpc Refresh (RefreshRequest) returns (RefreshResponse) {}
+    rpc UserInfo (UserInfoRequest) returns (UserInfoResponse) {}
 }
 
 message RegisterRequest{
@@ -46,4 +47,12 @@ message RefreshRequest{
 message RefreshResponse{
     string access_token = 1;
     string refresh_token = 2;
+}
+
+message UserInfoRequest{
+    int64 user_id = 1;
+}
+
+message UserInfoResponse{
+    string email = 1;
 }
